@@ -18,6 +18,8 @@ Node* reverseDLL(Node * head)
     {
         forward = curr->next;
         if(curr->next!=NULL)
+            // When forward is NULL , this case will give segmention fault
+            //Thats why if statement is used.
             forward -> prev = curr;
         curr -> next = prev1;
         curr -> prev = forward;
