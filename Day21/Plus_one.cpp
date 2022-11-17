@@ -1,33 +1,32 @@
 #include<bits/stdc++.h>
 using namespace std;
-class Solution {
-public:
-    vector<int> plusOne(vector<int>& digits) {
-        stack <int> st;
-        int carry = 0;
-        for(int i=digits.size()-1;i>=0;i++){
-            int num = digits[i] + 1 + carry;
-            if(num>9){
-                st.push(0);
-                carry = 1;
+vector<int> plusOne(vector<int>& digits) {
+        vector<int> ans;
+        for(int i=digits.size()-1;i>=0;i--)
+        {
+            if(digits[i]!=9)
+            {
+                digits[i]++;
+                break;
             }
-            else{
-                st.push(num);
-                carry = 0;
+            else if(i!=0)
+            {
+                digits[i] = 0;
             }
-        } 
-        if(carry == 1){
-            st.push(carry);
+            else
+            {
+                ans.push_back(1);
+                digits[i] = 0;
+            }
         }
-        int x = st.size();
-        for(int i=0;i<x;i++){
-            int top = st.top();
-            st.pop();
-            digits[i] = top;
+        
+        for(int i=0;i<digits.size();i++)
+        {
+            ans.push_back(digits[i]);
         }
-        return digits;  
+        
+        return ans;
     }
-};
 int main()
 {
     
